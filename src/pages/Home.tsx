@@ -17,6 +17,10 @@ import MahamritunjayPujaImg from '../assets/MahamritunjayPujaImg.png'
 import NavgrahaPujaImg from '../assets/NavgrahaPujaImg.png'
 import GaneshPujaImg from '../assets/GaneshPujaImg.png'
 
+import AnnadanamImg from '../assets/annadanamImg.PNG'
+import VidyaDanamImg from '../assets/VidyaDanamImg.PNG'
+import GausevaImg from '../assets/GausevaImg.PNG'
+
 import logo from '../assets/logo.png'
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -71,9 +75,9 @@ const pujas = [
 ]
 
 const donationCauses = [
-  { id: 1, name: 'Annadanam', desc: 'Feed the needy — daily langar at the ashram', raised: 84200, goal: 100000, suggested: 501 },
-  { id: 2, name: 'Gau Seva', desc: 'Care for cows at our gaushala', raised: 52000, goal: 75000, suggested: 251 },
-  { id: 3, name: 'Vidya Daan', desc: 'Sponsor education for underprivileged children', raised: 31000, goal: 50000, suggested: 1001 },
+  { id: 1, name: 'Annadanam', desc: 'Feed the needy — daily langar at the ashram', raised: 84200, goal: 100000, suggested: 501,img:AnnadanamImg },
+  { id: 2, name: 'Gau Seva', desc: 'Care for cows at our gaushala', raised: 52000, goal: 75000, suggested: 251 ,img:GausevaImg},
+  { id: 3, name: 'Vidya Daan', desc: 'Sponsor education for underprivileged children', raised: 31000, goal: 50000, suggested: 1001,img:VidyaDanamImg },
 ]
 
 const consultationHistory = [
@@ -1241,7 +1245,7 @@ function SevaScreen({ onBack, toast }: { onBack: () => void; toast: (m: string) 
             <button key={p.id} onClick={() => setSelectedPuja(p)} className="flex h-[130px] items-stretch rounded-3xl text-left overflow-hidden active:scale-[0.99] focus:outline-none w-full" style={{ background: C.card, border: `1px solid ${C.border}`, boxShadow: '0 3px 16px rgba(30,14,8,0.09)' }}>
               <div className="relative flex-shrink-0" style={{ width: '130px' }}>
                 <img src={p.img} alt={p.name} className="w-full h-full object-cover" />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, transparent 65%, rgba(253,248,241,0.3))' }} aria-hidden="true" />
+               
               </div>
               <div className="py-4 pr-4 pl-4 flex-1 flex items-start justify-center flex-col w-full">
                 <p className="font-semibold text-sm" style={{ color: C.text }}>{p.name}</p>
@@ -1257,8 +1261,13 @@ function SevaScreen({ onBack, toast }: { onBack: () => void; toast: (m: string) 
       ) : (
         <div className="px-5 pt-5 pb-8 flex flex-col gap-4">
           {donationCauses.map(cause => (
-            <PremiumCard key={cause.id}>
-              <div className="p-4">
+            <PremiumCard className='overflow-hidden' key={cause.id}>
+            <div className='flex  ' >
+
+              <div className='h-[160px] w-[160px] '>
+                <img src={cause.img} alt=""  className='object-fit w-full h-full'/>
+              </div>
+                <div className="p-4">
                 <p className="font-semibold text-sm" style={{ color: C.text }}>{cause.name}</p>
                 <p className="text-xs mt-0.5" style={{ color: C.textSec }}>{cause.desc}</p>
                 <div className="mt-3">
@@ -1279,6 +1288,7 @@ function SevaScreen({ onBack, toast }: { onBack: () => void; toast: (m: string) 
     </button>
                </div>
               </div>
+            </div>
             </PremiumCard>
           ))}
           <div>
