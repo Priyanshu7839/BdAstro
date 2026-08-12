@@ -14,7 +14,7 @@ const InfoScreen = () => {
                 <div className='rounded-t-[35px] overflow-hidden'>
                         <img src={InfoScreenImg} alt="" />
                 </div>
-                <div className='px-6 py-8 rounded-t-[40px] mt-[-30px] bg-[#3E060D] border-t-[1.5px] border-white flex flex-col gap-10'>
+                <div className='px-6 py-8 rounded-t-[40px] mt-[-35px] bg-[#3E060D] border-t-[1.5px] border-[#E08F3B] flex flex-col gap-10'>
 
                    <div className='flex items-center flex-col justify-center gap-3'>
                      <h1 className='font-extrabold text-[34px] text-[#FFDEAF]'>
@@ -50,7 +50,7 @@ const InfoScreen = () => {
 
                    <button
                    onClick={()=>{navigate('/SignIn')}}
-                   className='flex gap-1 items-center justify-center w-full py-3 bg-[#E08F3B] drop-shadow-2xl drop-shadow-[#E08F3B40] rounded-full text-[18px] text-[#41080f] font-extrabold' >
+                   className='flex gap-1 items-center justify-center w-full py-3 bg-linear-to-b from-[#FCD084] to-[#E08F3B] drop-shadow-2xl drop-shadow-[#E08F3B40] rounded-full text-[18px] text-[#41080f] font-extrabold' >
 शुरू करें <ArrowRight size={18} strokeWidth={4} className='mt-[-2px]'/>
                    </button>
 

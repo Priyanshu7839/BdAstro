@@ -8,11 +8,11 @@ const SplashScreen = () => {
 
     const [SplashScreenEnded,setSplashScreenEnded] = useState(false)
         
-          useEffect(()=>{
-              setTimeout(() => {
-                  navigate('/Info')
-              }, 4000);
-          },[])
+          // useEffect(()=>{
+          //     setTimeout(() => {
+          //         navigate('/Info')
+          //     }, 4000);
+          // },[])
   return (
    <div className="min-h-dvh w-full flex flex-col items-center" style={{ background: '#EDE3D5' }}>
       <div className="w-full flex flex-col relative overflow-hidden rounded-[40px]" style={{ maxWidth: '480px', minHeight: '100dvh' }}>

@@ -12,6 +12,13 @@ import Astrologer6Img from '../assets/Astrologer6Img.jpeg'
 import QuotesBabaImg from '../assets/QuotesBabaImg.jpeg'
 import LiveDarbarImg from '../assets/LiveDarbarImg.jpeg'
 
+import Lakshmipujaimg from '../assets/lakshmiPujaIMg.png'
+import MahamritunjayPujaImg from '../assets/MahamritunjayPujaImg.png'
+import NavgrahaPujaImg from '../assets/NavgrahaPujaImg.png'
+import GaneshPujaImg from '../assets/GaneshPujaImg.png'
+
+import logo from '../assets/logo.png'
+
 /* ═══════════════════════════════════════════════════════════════════════════
    DESIGN TOKENS
 ══════════════════════════════════════════════════════════════════════════ */
@@ -57,10 +64,10 @@ const gurujiSchedule = [
 ]
 
 const pujas = [
-  { id: 1, name: 'Ganesh Pooja', desc: 'Remove obstacles and attract auspicious energy', price: 501, duration: '45 min', img: 'https://images.unsplash.com/photo-1772346823487-2ae1e2409c01?w=300&h=200&fit=crop&auto=format' },
-  { id: 2, name: 'Navgraha Shanti', desc: 'Pacify all nine planetary influences', price: 1100, duration: '90 min', img: 'https://images.unsplash.com/photo-1774751345322-300b2984254b?w=300&h=200&fit=crop&auto=format' },
-  { id: 3, name: 'Lakshmi Pooja', desc: 'Invite prosperity and abundance', price: 751, duration: '60 min', img: 'https://images.unsplash.com/photo-1774751403526-39d30322e51b?w=300&h=200&fit=crop&auto=format' },
-  { id: 4, name: 'Mahamrityunjaya Jaap', desc: 'For health, protection, and long life', price: 2100, duration: '120 min', img: 'https://images.unsplash.com/photo-1772346823487-2ae1e2409c01?w=300&h=200&fit=crop&auto=format' },
+  { id: 1, name: 'Ganesh Pooja', desc: 'Remove obstacles and attract auspicious energy', price: 501, duration: '45 min', img: GaneshPujaImg },
+  { id: 2, name: 'Navgraha Shanti', desc: 'Pacify all nine planetary influences', price: 1100, duration: '90 min', img: NavgrahaPujaImg },
+  { id: 3, name: 'Lakshmi Pooja', desc: 'Invite prosperity and abundance', price: 751, duration: '60 min', img: Lakshmipujaimg },
+  { id: 4, name: 'Mahamrityunjaya Jaap', desc: 'For health, protection, and long life', price: 2100, duration: '120 min', img: MahamritunjayPujaImg },
 ]
 
 const donationCauses = [
@@ -220,7 +227,7 @@ function SectionHeader({ title, onViewAll }: { title: string; onViewAll?: () => 
   return (
     <div className="flex items-center justify-between mb-3">
       <h2 className="font-display text-xl" style={{ color: C.text, letterSpacing: '-0.01em' }}>{title}</h2>
-      {onViewAll && <button onClick={onViewAll} className="flex items-center gap-1 text-xs font-semibold active:opacity-60 px-3 py-1.5 rounded-full" style={{ color: C.maroon, background: C.surfaceMuted, border: `1px solid ${C.border}` }}>View All {Ico.arrowRight()}</button>}
+      {onViewAll && <button onClick={onViewAll} className="flex items-center gap-1 text-xs font-semibold active:opacity-60 px-3 py-1.5 rounded-full whitespace-nowrap" style={{ color: C.maroon, background: C.surfaceMuted, border: `1px solid ${C.border}` }}>View All {Ico.arrowRight()}</button>}
     </div>
   )
 }
@@ -365,14 +372,16 @@ function Toast({ message, onDone }: { message: string; onDone: () => void }) {
 function AppHeader({ onMenu, onNotification }: { onMenu: () => void; onNotification: () => void }) {
   return (
     <header className="sticky top-0 z-30 flex items-center justify-between px-4" style={{ background: 'rgba(253,248,241,0.82)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', borderBottom: `1px solid rgba(226,205,176,0.6)`, minHeight: '64px', paddingTop: 'max(12px, env(safe-area-inset-top))', paddingBottom: '12px', boxShadow: '0 1px 0 rgba(226,205,176,0.8), 0 4px 16px rgba(30,14,8,0.05)' }}>
-      <button onClick={onMenu} className="w-10 h-10 flex items-center justify-center rounded-full active:bg-amber-50 focus:outline-none" aria-label="Open menu">{Ico.menu()}</button>
+     <div className="flex items-center gap-1">
+       <button onClick={onMenu} className="w-10 h-10 flex items-center justify-center rounded-full active:bg-amber-50 focus:outline-none" aria-label="Open menu">{Ico.menu()}</button>
       <div className="flex items-center gap-2">
-        <SunLogo />
+        <img src={logo} alt="" className='w-[10%] rounded-2xl' />
         <div>
-          <p className="text-base font-bold leading-none" style={{ color: C.maroon, fontFamily: 'var(--font-display)' }}>BD ASTRO</p>
+          <p className="text-base font-bold leading-none" style={{ color: C.maroon }}>BD ASTRO</p>
           <p className="text-xs leading-none mt-0.5" style={{ color: C.textSec }}>Quick Answers | Clear Guidance</p>
         </div>
       </div>
+     </div>
       <button onClick={onNotification} className="w-10 h-10 flex items-center justify-center rounded-full active:bg-amber-50 focus:outline-none relative" aria-label="Notifications, 3 unread">
         {Ico.bell()}
         <span className="absolute top-1.5 right-1.5 w-4 h-4 rounded-full text-white flex items-center justify-center font-bold" style={{ background: C.live, fontSize: '9px' }}>3</span>
@@ -534,9 +543,9 @@ function HomeScreen({ onNav, toast }: { onNav: (s: string) => void; toast: (m: s
       </section>
 
       {/* ── Astrologer carousel ── */}
-      <section className="pt-6 pb-3">
-        <div className="px-5 mb-4 animate-fade-in-up delay-200"><SectionHeader title="Consult Expert Astrologers" onViewAll={() => onNav('consult')} /></div>
-        <div className="flex gap-4 overflow-x-auto snap-x scrollbar-hide px-5 pb-2">
+      <section className="pt-6 pb-3 px-5">
+        <div className=" mb-4 animate-fade-in-up delay-200"><SectionHeader title="Consult Expert Astrologers" onViewAll={() => onNav('consult')} /></div>
+        <div className="flex gap-4 overflow-x-auto snap-x scrollbar-hide  pb-2">
           {astrologers.slice(0,4).map((a, idx) => (
             <div key={a.id} className={`snap-start flex-shrink-0 rounded-3xl overflow-hidden animate-fade-in-up`} style={{ width: '200px', background: C.card, border: `1px solid ${C.border}`, boxShadow: '0 4px 20px rgba(30,14,8,0.10)', animationDelay: `${300 + idx * 80}ms` }}>
               <div className="relative">
@@ -613,7 +622,7 @@ function HomeScreen({ onNav, toast }: { onNav: (s: string) => void; toast: (m: s
           </div>
         </button>
         <div className="rounded-3xl overflow-hidden flex flex-col" style={{ background: 'linear-gradient(160deg,#FEF3E8,#F9E4C4)', border: `1px solid ${C.border}`, boxShadow: '0 4px 16px rgba(30,14,8,0.08)' }}>
-          <div className="flex-1 p-3.5 absolute  w-[35%] right-35">
+          <div className="flex-1 p-3.5 absolute max-[418px]:w-[45%]  w-[35%] max-[418px]:right-19 right-30">
             <h3 className="font-display text-base leading-snug mb-2" style={{ color: C.maroonDark }}>Guruji's Message</h3>
             
             <p className="text-xs leading-relaxed mt-1.5" style={{ color: C.text }}>Be patient, keep faith, and make the right decision at the right time.</p>
@@ -827,7 +836,7 @@ function ConsultScreen({ onBack, toast }: { onBack: () => void; toast: (m: strin
           </PremiumCard>
         )}
         {filtered.map((a, idx) => (
-          <div key={a.id} role="button" tabIndex={0} onClick={() => setSelected(a)} onKeyDown={e => e.key === 'Enter' && setSelected(a)} className={`overflow-hidden cursor-pointer active:scale-[0.99] focus:outline-none animate-fade-in-up delay-${Math.min(idx * 75, 700)}`} style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: '20px', boxShadow: '0 3px 16px rgba(30,14,8,0.09)' }}>
+          <div key={a.id} role="button" tabIndex={0} onClick={() => setSelected(a)} onKeyDown={e => e.key === 'Enter' && setSelected(a)} className={`overflow-hidden max-[400px]:h-[225px] h-[160px] cursor-pointer active:scale-[0.99] focus:outline-none animate-fade-in-up delay-${Math.min(idx * 75, 700)}`} style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: '20px', boxShadow: '0 3px 16px rgba(30,14,8,0.09)' }}>
             <div className="flex gap-0">
               <div className="relative flex-shrink-0">
                 <img src={a.img} alt={a.name} className="object-cover h-full" style={{ width: '130px', }} />
@@ -841,9 +850,9 @@ function ConsultScreen({ onBack, toast }: { onBack: () => void; toast: (m: strin
                 <p className="text-xs leading-snug" style={{ color: C.textSec }}>{a.expertise}</p>
                 <p className="text-xs mt-0.5" style={{ color: C.textSec }}>🕐 {a.experience} · 🗣 {a.lang}</p>
                 <div className="flex items-center gap-3 mt-2"><Rating score={a.rating} count={a.reviews} /><span className="text-xs font-bold" style={{ color: C.maroon }}>₹{a.price}/min</span></div>
-                <div className="flex gap-2 mt-2.5">
-                  <button onClick={e => { e.stopPropagation(); toast(`Calling ${a.name}…`) }} className="flex items-center gap-1 px-6 py-1.5 rounded-full text-md font-semibold border active:scale-95" style={{ borderColor: C.border, color: C.text, background: C.surface }}>{Ico.phone()} Call</button>
-                  <button onClick={e => { e.stopPropagation(); setSelected(a); setTimeout(() => setChatOpen(true), 50) }} className="flex items-center gap-1 px-6 py-1.5 rounded-full text-md font-semibold active:scale-95" style={{ background: C.maroon, color: 'white', boxShadow: '0 2px 6px rgba(123,31,31,0.25)' }}>{Ico.chat('white')} Chat</button>
+                <div className="flex gap-2 max-[400px]:flex-col mt-2.5">
+                  <button onClick={e => { e.stopPropagation(); toast(`Calling ${a.name}…`) }} className="flex max-[400px]:w-fit items-center gap-1 px-6 py-1.5 rounded-full text-md font-semibold border active:scale-95" style={{ borderColor: C.border, color: C.text, background: C.surface }}>{Ico.phone()} Call</button>
+                  <button onClick={e => { e.stopPropagation(); setSelected(a); setTimeout(() => setChatOpen(true), 50) }} className="flex items-center gap-1 px-6 py-1.5 rounded-full text-md font-semibold active:scale-95 max-[400px]:w-fit" style={{ background: C.maroon, color: 'white', boxShadow: '0 2px 6px rgba(123,31,31,0.25)' }}>{Ico.chat('white')} Chat</button>
                 </div>
               </div>
             </div>
@@ -1229,15 +1238,15 @@ function SevaScreen({ onBack, toast }: { onBack: () => void; toast: (m: string) 
         <div className="px-5 pt-5 pb-8 flex flex-col gap-4">
           <p className="text-sm leading-relaxed" style={{ color: C.textSec }}>Book a sacred puja performed by verified pandits. Watch live and receive prasad at home.</p>
           {pujas.map(p => (
-            <button key={p.id} onClick={() => setSelectedPuja(p)} className="flex items-stretch rounded-3xl text-left overflow-hidden active:scale-[0.99] focus:outline-none w-full" style={{ background: C.card, border: `1px solid ${C.border}`, boxShadow: '0 3px 16px rgba(30,14,8,0.09)' }}>
-              <div className="relative flex-shrink-0" style={{ width: '96px' }}>
+            <button key={p.id} onClick={() => setSelectedPuja(p)} className="flex h-[130px] items-stretch rounded-3xl text-left overflow-hidden active:scale-[0.99] focus:outline-none w-full" style={{ background: C.card, border: `1px solid ${C.border}`, boxShadow: '0 3px 16px rgba(30,14,8,0.09)' }}>
+              <div className="relative flex-shrink-0" style={{ width: '130px' }}>
                 <img src={p.img} alt={p.name} className="w-full h-full object-cover" />
                 <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, transparent 65%, rgba(253,248,241,0.3))' }} aria-hidden="true" />
               </div>
-              <div className="py-4 pr-4 pl-4 flex-1">
+              <div className="py-4 pr-4 pl-4 flex-1 flex items-start justify-center flex-col w-full">
                 <p className="font-semibold text-sm" style={{ color: C.text }}>{p.name}</p>
                 <p className="text-xs mt-1 leading-snug" style={{ color: C.textSec }}>{p.desc}</p>
-                <div className="flex items-center justify-between mt-2.5">
+                <div className="flex max-[400px]:flex-col max-[400px]:items-start gap-1 items-center justify-between mt-2.5 w-full">
                   <div><span className="font-bold text-base" style={{ color: C.maroon }}>₹{p.price}</span><span className="text-xs ml-2" style={{ color: C.textSec }}>⏱ {p.duration}</span></div>
                   <span className="text-xs font-bold flex items-center gap-0.5" style={{ color: C.maroon }}>Book {Ico.arrowRight()}</span>
                 </div>
@@ -1258,7 +1267,17 @@ function SevaScreen({ onBack, toast }: { onBack: () => void; toast: (m: string) 
                     <div className="h-2 rounded-full" style={{ background: `linear-gradient(to right, ${C.saffron}, ${C.maroon})`, width: `${Math.round(cause.raised/cause.goal*100)}%` }} />
                   </div>
                 </div>
-                <button onClick={() => { setDonateAmount(cause.suggested); }} className="mt-3 text-xs font-bold flex items-center gap-0.5" style={{ color: C.maroon }}>Donate ₹{cause.suggested} {Ico.arrowRight()}</button>
+               <div className='flex items-center justify-between w-full mt-3'>
+                 <button onClick={() => { setDonateAmount(cause.suggested); }} className="mt-3 text-xs font-bold flex items-center gap-0.5" style={{ color: C.maroon }}>Donate ₹{cause.suggested} {Ico.arrowRight()}</button>
+
+
+              
+
+                 <button  onClick={() => toast(`Subscription processed for ${cause.name}. 🙏 Thank you!`)} className={`flex items-center justify-center gap-2 font-semibold rounded-full transition-all active:scale-95 focus:outline-none focus-visible:ring-2`}
+      style={{ background: C.maroon, color: 'white', padding:'5px 20px', fontSize: '11px', boxShadow: '0 2px 8px rgba(123,31,31,0.22)' }}>
+      Subscribe
+    </button>
+               </div>
               </div>
             </PremiumCard>
           ))}
@@ -2132,7 +2151,7 @@ export default function Home() {
       default: return (
         <>
           <AppHeader onMenu={() => setMenuOpen(true)} onNotification={() => nav('notifications')} />
-          <main className="flex-1 overflow-y-auto" style={{ paddingBottom: '80px' }}>
+          <main className="flex-1 overflow-y-auto" >
             <HomeScreen onNav={nav} toast={showToast} />
           </main>
         </>
@@ -2148,7 +2167,7 @@ export default function Home() {
 
   return (
     <div className="min-h-dvh w-full flex flex-col items-center" style={{ background: '#EDE3D5' }}>
-      <div className="w-full flex flex-col relative" style={{ maxWidth: '480px', minHeight: '100dvh', background: C.bg }}>
+      <div className="w-full flex flex-col relative" style={{ maxWidth: '480px', minHeight: '100dvh', background: C.bg,paddingBottom: '80px'  }}>
         {renderScreen()}
 
         {!isFullscreen && <BottomNav active={bottomNavId} onNav={handleBottomNav} />}
