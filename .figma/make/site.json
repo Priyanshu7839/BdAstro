@@ -1,0 +1,10 @@
+{
+  "description": "Simplify your daily tasks with an intuitive tool designed to boost productivity and streamline workflow for professionals and teams.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
