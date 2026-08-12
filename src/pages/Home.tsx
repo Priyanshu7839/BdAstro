@@ -1243,7 +1243,7 @@ function SevaScreen({ onBack, toast }: { onBack: () => void; toast: (m: string) 
           <p className="text-sm leading-relaxed" style={{ color: C.textSec }}>Book a sacred puja performed by verified pandits. Watch live and receive prasad at home.</p>
           {pujas.map(p => (
             <button key={p.id} onClick={() => setSelectedPuja(p)} className="flex h-[130px] items-stretch rounded-3xl text-left overflow-hidden active:scale-[0.99] focus:outline-none w-full" style={{ background: C.card, border: `1px solid ${C.border}`, boxShadow: '0 3px 16px rgba(30,14,8,0.09)' }}>
-              <div className="relative flex-shrink-0" style={{ width: '130px' }}>
+              <div className="relative flex-shrink-0 " style={{ width: '130px' }}>
                 <img src={p.img} alt={p.name} className="w-full h-full object-cover" />
                
               </div>
@@ -1264,10 +1264,10 @@ function SevaScreen({ onBack, toast }: { onBack: () => void; toast: (m: string) 
             <PremiumCard className='overflow-hidden' key={cause.id}>
             <div className='flex  ' >
 
-              <div className='h-[160px] w-[160px] '>
-                <img src={cause.img} alt=""  className='object-fit w-full h-full'/>
+              <div className='h-[160px] w-[160px] max-[485px]:h-[225px]'>
+                <img src={cause.img} alt=""  className='object-cover w-full h-full'/>
               </div>
-                <div className="p-4">
+                <div className="p-4 flex-1">
                 <p className="font-semibold text-sm" style={{ color: C.text }}>{cause.name}</p>
                 <p className="text-xs mt-0.5" style={{ color: C.textSec }}>{cause.desc}</p>
                 <div className="mt-3">
@@ -1276,7 +1276,7 @@ function SevaScreen({ onBack, toast }: { onBack: () => void; toast: (m: string) 
                     <div className="h-2 rounded-full" style={{ background: `linear-gradient(to right, ${C.saffron}, ${C.maroon})`, width: `${Math.round(cause.raised/cause.goal*100)}%` }} />
                   </div>
                 </div>
-               <div className='flex items-center justify-between w-full mt-3'>
+               <div className='flex items-center justify-between w-full mt-3 max-[490px]:flex-col max-[490px]:items-start gap-3'>
                  <button onClick={() => { setDonateAmount(cause.suggested); }} className="mt-3 text-xs font-bold flex items-center gap-0.5" style={{ color: C.maroon }}>Donate ₹{cause.suggested} {Ico.arrowRight()}</button>
 
 
