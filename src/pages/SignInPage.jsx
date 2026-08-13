@@ -12,7 +12,7 @@ const SignInPage = () => {
       <div className="w-full flex flex-col relative" style={{ maxWidth: '480px', height: '100dvh'     }}>
             
                 <div className='h-full overflow-hidden'>
-                        <img src={LoginScreenImg} alt="" />
+                        <img src={LoginScreenImg} alt=""  className='object-fill'/>
                 </div>
                 <div 
                 
