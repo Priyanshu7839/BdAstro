@@ -22,6 +22,7 @@ import VidyaDanamImg from '../assets/VidyaDanamImg.PNG'
 import GausevaImg from '../assets/GausevaImg.PNG'
 
 import logo from '../assets/logo.png'
+import { useNavigate } from 'react-router-dom'
 
 /* ═══════════════════════════════════════════════════════════════════════════
    DESIGN TOKENS
@@ -581,27 +582,27 @@ function HomeScreen({ onNav, toast }: { onNav: (s: string) => void; toast: (m: s
       </section>
 
       {/* ── Service grid ── */}
-      <section className="mx-4 my-3 rounded-3xl overflow-hidden relative animate-fade-in-scale delay-400" style={{ background: 'linear-gradient(160deg,#2A0808 0%,#5A1212 50%,#8B3A0A 100%)', boxShadow: '0 12px 40px rgba(30,8,4,0.28), inset 0 1px 0 rgba(255,180,80,0.15)' }}>
+      <section className="mx-4 my-3 rounded-3xl overflow-hidden relative animate-fade-in-scale delay-400" style={{ background: C.card, boxShadow: '0 12px 40px rgba(30,8,4,0.28), inset 0 1px 0 rgba(255,180,80,0.15)' }}>
         {/* Spinning mandala background */}
         <div className="absolute animate-spin-slow pointer-events-none" style={{ top: '-30px', right: '-30px', color: 'rgba(255,200,100,1)' }} aria-hidden="true">
-          <MandalaIllustration size={130} opacity={0.18} />
+          <MandalaIllustration size={130} opacity={1} />
         </div>
         <div className="absolute animate-spin-reverse pointer-events-none" style={{ bottom: '-25px', left: '-25px', color: 'rgba(255,200,100,1)' }} aria-hidden="true">
-          <MandalaIllustration size={100} opacity={0.12} />
+          <MandalaIllustration size={100} opacity={1} />
         </div>
         <div className="relative z-10 px-4 pt-5 pb-5">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <OmSymbol size={22} color="rgba(255,200,100,0.55)" />
-            <p className="text-xs font-bold tracking-widest uppercase" style={{ color: 'rgba(255,200,120,0.65)', letterSpacing: '0.12em' }}>Our Services</p>
-            <OmSymbol size={22} color="rgba(255,200,100,0.55)" />
+            <OmSymbol size={22} color={C.maroon}/>
+            <p className="text-xs font-bold tracking-widest uppercase" style={{ color: C.maroon, letterSpacing: '0.12em' }}>Our Services</p>
+            <OmSymbol size={22} color={C.maroon}/>
           </div>
           <div className="grid grid-cols-4 gap-2.5">
             {services.map(s => (
-              <button key={s.id} onClick={() => onNav(serviceScreenMap[s.id] || s.id)} className="flex flex-col items-center gap-2 py-3.5 rounded-2xl active:scale-95 focus:outline-none transition-all" style={{ background: 'rgba(255,255,255,0.08)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.12)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.12)' }}>
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg,rgba(201,107,10,0.35),rgba(123,31,31,0.35))', border: '1px solid rgba(255,180,80,0.25)', boxShadow: '0 0 14px rgba(201,107,10,0.2), inset 0 1px 0 rgba(255,220,140,0.2)' }}>
-                  <div style={{ filter: 'brightness(0) invert(1) opacity(0.9)' }}>{s.icon()}</div>
+              <button key={s.id} onClick={() => onNav(serviceScreenMap[s.id] || s.id)} className="flex flex-col items-center gap-2 py-3.5 rounded-2xl active:scale-95 focus:outline-none transition-all drop-shadow-2xl" style={{ background: 'rgba(255,255,255,0.12)', border: '1.5px solid rgba(255,255,255,0.35)', color: 'white', minHeight: '44px', backdropFilter: 'blur(32px)' }}>
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ background: C.maroon, border: '1px solid rgba(255,180,80,1)', boxShadow: '0 0 14px rgba(201,107,10,0.2), inset 0 1px 0 rgba(255,220,140,0.2)' }}>
+                  <div style={{ filter: 'brightness(0) invert(1) opacity(1)' }}>{s.icon()}</div>
                 </div>
-                <span className="font-semibold text-center leading-tight px-0.5" style={{ color: 'rgba(255,230,190,0.9)', fontSize: '9.5px' }}>{s.label}</span>
+                <span className="font-semibold text-center leading-tight px-0.5" style={{ color: C.maroon, fontSize: '9.5px' }}>{s.label}</span>
               </button>
             ))}
           </div>
@@ -1267,7 +1268,7 @@ function SevaScreen({ onBack, toast }: { onBack: () => void; toast: (m: string) 
               <div className='h-[160px] w-[160px] max-[485px]:h-[225px]'>
                 <img src={cause.img} alt=""  className='object-cover w-full h-full'/>
               </div>
-                <div className="p-4 flex-1">
+                <div className="p-4 flex-1 flex flex-col items-start justify-center">
                 <p className="font-semibold text-sm" style={{ color: C.text }}>{cause.name}</p>
                 <p className="text-xs mt-0.5" style={{ color: C.textSec }}>{cause.desc}</p>
                 <div className="mt-3">
@@ -1279,13 +1280,10 @@ function SevaScreen({ onBack, toast }: { onBack: () => void; toast: (m: string) 
                <div className='flex items-center justify-between w-full mt-3 max-[490px]:flex-col max-[490px]:items-start gap-3'>
                  <button onClick={() => { setDonateAmount(cause.suggested); }} className="mt-3 text-xs font-bold flex items-center gap-0.5" style={{ color: C.maroon }}>Donate ₹{cause.suggested} {Ico.arrowRight()}</button>
 
-
-              
-
                  <button  onClick={() => toast(`Subscription processed for ${cause.name}. 🙏 Thank you!`)} className={`flex items-center justify-center gap-2 font-semibold rounded-full transition-all active:scale-95 focus:outline-none focus-visible:ring-2`}
-      style={{ background: C.maroon, color: 'white', padding:'5px 20px', fontSize: '11px', boxShadow: '0 2px 8px rgba(123,31,31,0.22)' }}>
-      Subscribe
-    </button>
+                  style={{ background: C.maroon, color: 'white', padding:'5px 20px', fontSize: '11px', boxShadow: '0 2px 8px rgba(123,31,31,0.22)' }}>
+                      Subscribe
+                </button>
                </div>
               </div>
             </div>
@@ -1310,6 +1308,8 @@ function SevaScreen({ onBack, toast }: { onBack: () => void; toast: (m: string) 
 ══════════════════════════════════════════════════════════════════════════ */
 function ProfileScreen({ onBack, toast, onNav }: { onBack: () => void; toast: (m: string) => void; onNav: (s: string) => void }) {
   const [tab, setTab] = useState<'history' | 'kundli' | 'settings'>('history')
+
+  const navigate = useNavigate()
   return (
     <div className="flex flex-col h-full overflow-y-auto animate-fade-in">
       <PageHeader title="My Profile" onBack={onBack} />
@@ -1401,7 +1401,9 @@ function ProfileScreen({ onBack, toast, onNav }: { onBack: () => void; toast: (m
             </button>
           ))}
           <div className="mt-4">
-            <button onClick={() => toast('Signed out')} className="w-full py-3 rounded-full text-sm font-semibold" style={{ background: '#FEE2E2', color: C.live }}>Sign Out</button>
+            <button onClick={() => {
+              navigate('/')
+            }} className="w-full py-3 rounded-full text-sm font-semibold" style={{ background: '#FEE2E2', color: C.live }}>Sign Out</button>
           </div>
         </div>
       )}
