@@ -14,11 +14,11 @@ const SplashScreen = () => {
               }, 4000);
           },[])
   return (
-   <div className="min-h-[100vh] w-full flex flex-col items-center" style={{ background: '#EDE3D5' }}>
-      <div className="w-full flex flex-col relative overflow-hidden " style={{ maxWidth: '480px', minHeight: '100vh' }}>
+   <div className="h-[100vh]  w-full flex flex-col items-center" style={{ background: '#EDE3D5' }}>
+      <div className="w-full flex flex-col relative overflow-hidden h-full" style={{ maxWidth: '550px', minHeight: '100vh' }}>
        
 
-            <img src={SplashScreenImg} alt=""  className='object-cover h-full w-full'
+            <img src={SplashScreenImg} alt=""  className='object-fill h-full w-full'
             
              style={{
           clipPath: "circle(0% at 50% 50%)",

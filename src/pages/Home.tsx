@@ -2177,7 +2177,7 @@ export default function Home() {
 
   return (
     <div className="min-h-dvh w-full flex flex-col items-center" style={{ background: '#EDE3D5' }}>
-      <div className="w-full flex flex-col relative" style={{ maxWidth: '480px', minHeight: '100dvh', background: C.bg,paddingBottom: '80px'  }}>
+      <div className="w-full flex flex-col relative" style={{ maxWidth: '550px', minHeight: '100dvh', background: C.bg,paddingBottom: '80px'  }}>
         {renderScreen()}
 
         {!isFullscreen && <BottomNav active={bottomNavId} onNav={handleBottomNav} />}
