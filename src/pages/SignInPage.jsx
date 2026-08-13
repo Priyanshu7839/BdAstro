@@ -8,10 +8,10 @@ const SignInPage = () => {
 
     const navigate = useNavigate()
   return (
-    <div className="min-h-dvh w-full flex flex-col items-center" style={{ background: '#EDE3D5' }}>
-      <div className="w-full flex flex-col relative" style={{ maxWidth: '480px', minHeight: '100dvh'     }}>
+    <div className="h-[100vh] w-full flex flex-col items-center" style={{ background: '#EDE3D5' }}>
+      <div className="w-full flex flex-col relative" style={{ maxWidth: '480px', height: '100dvh'     }}>
             
-                <div className='rounded-t-[35px] overflow-hidden'>
+                <div className='h-full overflow-hidden'>
                         <img src={LoginScreenImg} alt="" />
                 </div>
                 <div 
