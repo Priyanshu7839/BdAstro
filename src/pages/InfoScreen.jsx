@@ -8,10 +8,10 @@ const InfoScreen = () => {
 
     
   return (
-    <div className="min-h-dvh w-full flex flex-col items-center" style={{ background: '#EDE3D5' }}>
+    <div className="min-h-[100vh] w-full flex flex-col items-center" style={{ background: '#EDE3D5' }}>
       <div className="w-full flex flex-col relative" style={{ maxWidth: '480px', minHeight: '100dvh'     }}>
             
-                <div className='rounded-t-[35px] overflow-hidden'>
+                <div className=' overflow-hidden'>
                         <img src={InfoScreenImg} alt="" />
                 </div>
                 <div className='px-6 py-8 rounded-t-[40px] mt-[-35px] bg-[#3E060D] border-t-[1.5px] border-[#E08F3B] flex flex-col gap-10'>
